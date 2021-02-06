@@ -11,7 +11,7 @@ origins = [
     FRONT_END_URL
 ]
 
-app = FastAPI()
+app = FastAPI(docs_url="/")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
