@@ -1,11 +1,14 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.ccass.infrastructure import api
 
+FRONT_END_URL = os.getenv("FRONT_END_URL", "http://localhost:3000")
+
 origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    FRONT_END_URL
 ]
 
 app = FastAPI()
