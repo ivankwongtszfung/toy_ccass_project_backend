@@ -1,15 +1,5 @@
 
-# Interview Project - CCASS Plotter
-## To be completed by Wednesday 3 Feburary
-
-By getting the underlying data from the link below, build a single page web app using Python and JavaScript. If you can build it solely in Python, that's fine too.
- 
-https://www.hkexnews.hk/sdw/search/searchsdw.aspx
- 
-## Duration: 1 week from this spec is sent.
-Deploy the app onto an AWS free-tier
-Commit the code to a public Github repo
-Pass us the app URL and the Github link
+# CCASS Plotter
  
 ## Tab 1 - trend plot
 ### Input
@@ -32,11 +22,22 @@ There could be transaction between two participants and we would like to detect 
 
 
 ## To start the project
+### For Window
 ```bat
 pip install virtualenv
 virtualenv venv
-.\venv\Scripts\activate.bat
+.\venv\Scripts\activate.bat 
 pip install -r requirement.txt
-uvicorn app.app_file:app --reload --reload-dir app
-// serves at http://127.0.0.1:8000/docs
+uvicorn app.app_file:app --reload --reload-dir app --port 5000
+// serves at http://127.0.0.1:5000/docs
 ```
+### For Linux & MacOS
+```bat
+pip install virtualenv
+virtualenv venv
+. venv/bin/activate.bat 
+pip install -r requirement.txt
+uvicorn app.app_file:app --reload --reload-dir app --port 5000
+// serves at http://127.0.0.1:5000/docs
+```
+### it also support Docker, reference the documentation for more information
