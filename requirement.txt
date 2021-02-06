@@ -1,0 +1,5 @@
+fastapi
+bs4
+pandas
+requests_html
+numpy
