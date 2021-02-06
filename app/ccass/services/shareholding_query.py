@@ -173,9 +173,18 @@ class TransactionService:
         return result["shareholding-percent"]
 
     def _get_diff_holding(self, prev_df, curr_df):
-        diff_holding = Counter(curr_df.to_dict()) - Counter(prev_df.to_dict())
+        curr_holding = Counter(curr_df.to_dict())
+        prev_holding = Counter(prev_df.to_dict())
+        pos_holding = curr_holding - prev_holding
+        neg_holding = prev_holding - curr_holding
+        pos_dict = self.__counter_larger_than_threshold(pos_holding)
+        neg_dict = self.__counter_larger_than_threshold(neg_holding, True)
+        return {**pos_dict, **neg_dict}
+
+    def __counter_larger_than_threshold(self, diff_holding, is_negtive = False):
+        sign = -1 if is_negtive else 1
         return {
-            id: round(amount, 2)
+            id: round(amount, 2) * sign
             for id, amount in diff_holding.items()
             if round(amount, 2) >= self.threshold
         }
