@@ -77,7 +77,7 @@ class CCASSHttpService:
         self.stock_code = stock_code
         self.start_date = start_date
         self.end_date = end_date
-        self.date_span = (self.end_date - self.start_date).days
+        self.date_span = (self.end_date - self.start_date).days + 1
 
     def execute(self):
         result = {}
